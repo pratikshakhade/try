@@ -13,7 +13,15 @@ public class UserSer {
 	UsersRep rep;
 	
 	public Users saveuser(Users user) {		
-		user.setUserRole(user.getUserRole());
+		Users u=new Users();
+//		u.setName(user.getName());
+//		u.setEmail(user.getEmail());
+//		u.setPassword(user.getPassword());
+		
+		System.out.println("service method is call");
+		u.setUserRole(user.getUserRole());
+		
+	
 		return rep.save(user);
 	}
 	
