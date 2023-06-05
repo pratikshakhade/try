@@ -12,11 +12,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UsersRole {
+public class Authorities {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	int id;
-	String role;
+	String username;
+	String authority;
 	
 }

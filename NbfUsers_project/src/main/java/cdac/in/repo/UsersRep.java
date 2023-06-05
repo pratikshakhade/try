@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import cdac.in.module.Users;
 
 @Repository
-public interface UsersRep extends JpaRepository<Users, Integer> {
+public interface UsersRep extends JpaRepository<Users, String> {
 
 }

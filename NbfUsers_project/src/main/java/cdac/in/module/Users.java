@@ -26,16 +26,15 @@ import lombok.ToString;
 
 public class Users  {
 @Id
-@GeneratedValue(strategy = GenerationType.AUTO)
-int id;
-@NotNull(message = "name cant be null")
-String name;
+String username;
 String password;
-@NotNull(message = "Email cant be null")
-String email;
+//@NotNull(message = "Email cant be null")
+//String email;
+
+boolean enabled=true;
 
 @OneToOne(cascade = CascadeType.ALL)
-@JoinColumn(name = "user_role_id",referencedColumnName = "id")
-UsersRole userRole;
+@JoinColumn(name = "users_pkey",referencedColumnName = "username")
+Authorities userRole;
 	
 }

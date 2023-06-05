@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,22 +17,24 @@ import jakarta.validation.Valid;
 @RestController
 public class UserController {
 	
+	
+	
 	@Autowired
 	UserSer ser;
 	
-	@GetMapping("/")
-	public ResponseEntity<Users> getM(@RequestParam(value = "id") int id) {
+	@GetMapping("/{name}")
+	public ResponseEntity<Users> getM(@PathVariable String name) {
 		
-		Users u =ser.getuser(id);
+		Users u =ser.getuser(name);
 		return new ResponseEntity<Users>(u, HttpStatus.OK);
 	}
 	
 	@PostMapping("/user")
-	public ResponseEntity<Users> saveuser(@Valid @RequestBody Users user) {
+	public ResponseEntity<Object> saveuser(@Valid @RequestBody Users user) {
 	System.out.println("controller start");
-       Users u=	ser.saveuser(user);
+       String u=	ser.saveuser(user);
        System.out.println("controller end");
-		return new ResponseEntity<Users>(u, HttpStatus.OK);
+		return new ResponseEntity<Object>(u, HttpStatus.OK);
 		
 	}
 
