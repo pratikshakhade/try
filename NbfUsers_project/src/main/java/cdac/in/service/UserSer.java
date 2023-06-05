@@ -3,6 +3,7 @@ package cdac.in.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,10 @@ public class UserSer {
 	@Autowired
 	UserDetailsManager manager;
 	
+//	@Autowired
+//	PasswordEncoder encoder;
+	
+	
 	public String saveuser(Users user) {		
 //		Users u=new Users();
 //		System.out.println("service method is call");
@@ -31,7 +36,7 @@ public class UserSer {
 //		System.out.println("service method is call");
 		u.setUserRole(user.getUserRole());
 		LoginUsers login=new LoginUsers(user);
-		
+	//	u.setPassword(encoder.encode(u.getPassword()));
 		 manager.createUser(login);
 		 return "stored";
 	}
